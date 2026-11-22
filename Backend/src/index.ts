@@ -8,6 +8,7 @@ import { stallRouter } from './routes/stallRouter.ts';
 import { authRouter } from './routes/authRouter.ts';
 import { errorHandler, notFoundHandler } from './middlewares/errorHandler.ts';
 import cors from 'cors';
+import { auditRouter } from './routes/auditRouter.ts';
 
 const app: Application = express();
 const PORT: number = 3000;
@@ -37,6 +38,7 @@ app.get('/health', async (req: Request, res: Response) => {
 app.use('/api/v1/stalls', stallRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1', apiRouter);
+app.use('/api/v1/audit-logs', auditRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
