@@ -30,4 +30,11 @@ authRouter.get('/me', authenticate, (req, res) => {
   return authController.me(req, res);
 });
 
+authRouter.post('/logout', authenticate, (req, res) => {
+  // #swagger.security = [{ "bearerAuth": [] }]
+  // #swagger.responses[200] = { description: 'Logout berhasil, audit LOGOUT dicatat (best-effort)' }
+  // #swagger.responses[401] = { description: 'Belum login atau token tidak valid' }
+  return authController.logout(req, res);
+});
+
 export { authRouter };
